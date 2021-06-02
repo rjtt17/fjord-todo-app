@@ -6,7 +6,7 @@ const app = new Vue({
     showContent: false,
     lists: []
   },
-  mounted: function () {
+  mounted () {
     if (localStorage.getItem('lists')) {
       try {
         this.lists = JSON.parse(localStorage.getItem('lists'))
@@ -16,7 +16,7 @@ const app = new Vue({
     }
   },
   methods: {
-    add: function () {
+    add () {
       const max = this.lists.reduce(function (a, b) {
         return a.id > b.id ? a.id : b.id
       }, 0)
@@ -28,11 +28,11 @@ const app = new Vue({
       this.save()
       this.content = ''
     },
-    remove: function (index) {
+    remove (index) {
       this.lists.splice(index, 1)
       this.save()
     },
-    edit: function (index) {
+    edit (index) {
       if (this.lists.some(list => list.isEdit === true)) {
         this.openModal()
       } else {
@@ -44,7 +44,7 @@ const app = new Vue({
         this.editContent = this.lists[index].content
       }
     },
-    update: function (index) {
+    update (index) {
       this.lists.splice(index, 1, {
         id: this.lists[index].id,
         content: this.editContent,
@@ -53,14 +53,14 @@ const app = new Vue({
       this.save()
       this.editContent = ''
     },
-    save: function () {
+    save () {
       const parsed = JSON.stringify(this.lists)
       localStorage.setItem('lists', parsed)
     },
-    openModal: function () {
+    openModal () {
       this.showContent = true
     },
-    closeModal: function () {
+    closeModal () {
       this.showContent = false
     }
   }

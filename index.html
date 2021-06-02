@@ -10,21 +10,21 @@
     <h2>To do一覧</h2>
     <p v-if="lists.length == 0">To do の登録がありません</p>
     <ul>
-      <li v-for="(list, index) in lists" v-bind:key="list.id">
+      <li v-for="(list, index) in lists" :key="list.id">
         <span v-if="!list.isEdit">{{list.content}}</span>
         <input v-if="list.isEdit"　v-model="editContent" >
-        <button class="btn-edit" v-on:click="edit(index)" v-if="!list.isEdit">編集</button>
-        <button class="btn-update" v-on:click="update(index)" v-if="list.isEdit" >更新</button>
-        <button class="btn-remove" v-on:click="remove(index)">削除</button>
+        <button class="btn-edit" @click="edit(index)" v-if="!list.isEdit">編集</button>
+        <button class="btn-update" @click="update(index)" v-if="list.isEdit" >更新</button>
+        <button class="btn-remove" @click="remove(index)">削除</button>
       </li>
     </ul>
     <hr>
     ※To doを追加する <input v-model="content" placeholder="入力して下さい">
-    <button class="btn-add" v-on:click="add">追加</button>
+    <button class="btn-add" @click="add">追加</button>
     <div id="overlay" v-show="showContent">
       <div id="content">
         <p>一つ目の編集を更新してから、次の編集をして下さい。</p>
-        <button v-on:click="closeModal">Close</button>
+        <button @click="closeModal">Close</button>
       </div>
     </div>
   </div>
