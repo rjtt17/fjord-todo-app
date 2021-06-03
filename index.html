@@ -12,7 +12,7 @@
     <ul>
       <li v-for="(list, index) in lists" :key="list.id">
         <template v-if="list.isEdit">
-          <input v-model="editContent" >
+          <input v-model="list.content" >
           <button class="btn-update" @click="update(index)">更新</button>
         </template>
         <template v-else>
@@ -25,12 +25,6 @@
     <hr>
     ※To doを追加する <input v-model="content" placeholder="入力して下さい">
     <button class="btn-add" @click="add">追加</button>
-    <div id="overlay" v-show="showContent">
-      <div id="content">
-        <p>一つ目の編集を更新してから、次の編集をして下さい。</p>
-        <button @click="closeModal">Close</button>
-      </div>
-    </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
   <script src="app.js"></script>

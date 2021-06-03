@@ -2,8 +2,8 @@ const app = new Vue({
   el: '#app',
   data: {
     content: '',
-    editContent: '',
     showContent: false,
+    editingId: [],
     lists: []
   },
   mounted () {
@@ -33,25 +33,19 @@ const app = new Vue({
       this.save()
     },
     edit (index) {
-      if (this.lists.some(list => list.isEdit === true)) {
-        this.openModal()
-      } else {
-        this.lists.splice(index, 1, {
-          id: this.lists[index].id,
-          content: this.lists[index].content,
-          isEdit: true
-        })
-        this.editContent = this.lists[index].content
-      }
+      this.lists.splice(index, 1, {
+        id: this.lists[index].id,
+        content: this.lists[index].content,
+        isEdit: true
+      })
     },
     update (index) {
       this.lists.splice(index, 1, {
         id: this.lists[index].id,
-        content: this.editContent,
+        content: this.lists[index].content,
         isEdit: false
       })
       this.save()
-      this.editContent = ''
     },
     save () {
       const parsed = JSON.stringify(this.lists)
