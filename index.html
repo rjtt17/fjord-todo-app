@@ -11,10 +11,14 @@
     <p v-if="lists.length == 0">To do の登録がありません</p>
     <ul>
       <li v-for="(list, index) in lists" :key="list.id">
-        <span v-if="!list.isEdit">{{list.content}}</span>
-        <input v-if="list.isEdit"　v-model="editContent" >
-        <button class="btn-edit" @click="edit(index)" v-if="!list.isEdit">編集</button>
-        <button class="btn-update" @click="update(index)" v-if="list.isEdit" >更新</button>
+        <template v-if="list.isEdit">
+          <input v-model="editContent" >
+          <button class="btn-update" @click="update(index)">更新</button>
+        </template>
+        <template v-else>
+          <span>{{list.content}}</span>
+          <button class="btn-edit" @click="edit(index)">編集</button>
+        </template>
         <button class="btn-remove" @click="remove(index)">削除</button>
       </li>
     </ul>
