@@ -11,7 +11,7 @@
     <p v-if="lists.length == 0">To do の登録がありません</p>
     <ul>
       <li v-for="(list, index) in lists" :key="list.id">
-        <template v-if="list.isEdit">
+        <template v-if="editingIds.some(editingId => editingId ===list.id)">
           <input v-model="list.content" >
           <button class="btn-update" @click="update(index)">更新</button>
         </template>

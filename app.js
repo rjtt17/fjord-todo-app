@@ -3,7 +3,7 @@ const app = new Vue({
   data: {
     content: '',
     showContent: false,
-    editingId: [],
+    editingIds: [],
     lists: []
   },
   mounted () {
@@ -22,8 +22,7 @@ const app = new Vue({
       }, 0)
       this.lists.push({
         id: max + 1,
-        content: this.content,
-        isEdit: false
+        content: this.content
       })
       this.save()
       this.content = ''
@@ -35,17 +34,17 @@ const app = new Vue({
     edit (index) {
       this.lists.splice(index, 1, {
         id: this.lists[index].id,
-        content: this.lists[index].content,
-        isEdit: true
+        content: this.lists[index].content
       })
+      this.editingIds.push(this.lists[index].id)
     },
     update (index) {
       this.lists.splice(index, 1, {
         id: this.lists[index].id,
-        content: this.lists[index].content,
-        isEdit: false
+        content: this.lists[index].content
       })
       this.save()
+      this.editingIds = this.editingIds.filter(editingId => editingId !== this.lists[index].id)
     },
     save () {
       const parsed = JSON.stringify(this.lists)
