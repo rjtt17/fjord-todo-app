@@ -50,12 +50,6 @@ const app = new Vue({
     save () {
       const parsed = JSON.stringify(this.lists)
       localStorage.setItem('lists', parsed)
-    },
-    openModal () {
-      this.showContent = true
-    },
-    closeModal () {
-      this.showContent = false
     }
   }
 })
