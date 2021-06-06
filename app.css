@@ -1,0 +1,57 @@
+.btn-edit {
+  display: inline-block;
+  text-align: left;
+  border: 1px solid #11B1C0;
+  font-size: 1rem;
+  color: #11B1C0;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition: .4s;
+}
+
+.btn-edit:hover {
+  background-color: #11B1C0;
+  border-color: #cbe585;
+  color: #FFF;
+}
+
+.btn-remove {
+  display: inline-block;
+  text-align: left;
+  border: 1px solid #DC143C;
+  font-size: 1rem;
+  color: #DC143C;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition: .4s;
+}
+
+.btn-remove:hover {
+  background-color: #DC143C;
+  border-color: #cbe585;
+  color: #FFF;
+}
+
+.btn-update, .btn-add {
+  display: inline-block;
+  text-align: left;
+  border: 1px solid #3CB371;
+  font-size: 1rem;
+  color: #3CB371;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition: .4s;
+}
+
+.btn-update:hover, .btn-add:hover {
+  background-color: #3CB371;
+  border-color: #cbe585;
+  color: #FFF;
+}
+
+li {
+  margin-bottom: 0.2rem;
+}

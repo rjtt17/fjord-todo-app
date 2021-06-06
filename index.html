@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>ToDoアプリ</title>
+  <link href="app.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <h2>To do一覧</h2>
+    <p v-if="lists.length == 0">To do の登録がありません</p>
+    <ul>
+      <li v-for="(list, index) in lists" :key="list.id">
+        <template v-if="editingIds.some(editingId => editingId ===list.id)">
+          <input v-model="list.content" >
+          <button class="btn-update" @click="update(index)">更新</button>
+        </template>
+        <template v-else>
+          <span>{{list.content}}</span>
+          <button class="btn-edit" @click="edit(index)">編集</button>
+        </template>
+        <button class="btn-remove" @click="remove(index)">削除</button>
+      </li>
+    </ul>
+    <hr>
+    ※To doを追加する <input v-model="content" placeholder="入力して下さい">
+    <button class="btn-add" @click="add">追加</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
